@@ -37,7 +37,7 @@
             });
 
 
-           $('.confirm-booking').click(function(e){
+            $(document).on('click', '.confirm-booking', function(e){
             e.preventDefault();
             var selectedTime = $('#showModal select option:selected').text();
             var recipientName = $('#recipient-name').val(); //varför val??
@@ -46,9 +46,10 @@
             $('#dropdownMenuButton-' + tableId).removeClass('btn-success').addClass('btn-danger');
            });
 
-            $('.release').click(function(e){
+            $(document).on('click', '.release', function(e){
                 e.preventDefault();
                 var tableId = $(this).data('table-id');
+                console.log()
                 $('#selected-time-display-' + tableId).text('');
                 $('#dropdownMenuButton-' + tableId).removeClass('btn-danger').addClass('btn-success');
             });
@@ -117,22 +118,23 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center p-1">
                         Bord 1 <span id="selected-time-display-1"></span>
                         <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Action
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-1">
                                 <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="1" href="#">Boka</a>
                                 <a class="dropdown-item release" href="#">Avboka</a>
                             </div>
                         </div>
                     </li>
+
                     <li class="list-group-item d-flex justify-content-between align-items-center p-1">
                         Bord 2 <span id="selected-time-display-2"></span>
                         <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Action
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-2">
                                 <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="2" href="#">Boka</a>
                                 <a class="dropdown-item release" href="#">Avboka</a>
                             </div>
@@ -140,6 +142,15 @@
                     </li>
                 </ul>
             </div>
+
+
+
+
+
+
+
+
+
             <div class="col-md-8">
                 <h4 class="mt-3">Restaurang</h4>
                 <ul class="list-group mt-3">
