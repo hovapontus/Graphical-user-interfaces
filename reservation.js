@@ -22,7 +22,13 @@ function addToReservation(GlobalObject, firstName) {
     var TR = $("<tr></tr>"); // Skapa ett nytt tr-element
     var TH = $("<th></th>").attr("scope", "row").attr("id", "queId").text(GlobalObject.queId);
     var TDfirst = $("<td></td>").text(firstName);
-    var closeKnapp = $("<button></button>").attr("class", "btn-close").attr("aria-label", "Close").attr("data-bs-dismiss", TR);
+    var closeKnapp = $("<button></button>").attr("class", "btn-close");
+    //tar bort hela tr elementet när man trycker på knappen
+    closeKnapp.on("click", function () {
+        $(this).closest("tr").remove();
+    });
+
+
 
     /**
      * <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
