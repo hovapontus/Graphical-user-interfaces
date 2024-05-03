@@ -26,24 +26,20 @@
     </nav>
     <script>
         $(document).ready(function(){
-            /*
-            $('.book').click(function(e){
-                e.preventDefault();
-                $('#dropdownMenuButton').removeClass('btn-success').addClass('btn-danger');
-            });
-            */
            $('.confirm-booking').click(function(e){
             e.preventDefault();
             var selectedTime = $('#showModal select option:selected').text();
             var recipientName = $('#recipient-name').val(); //varför val??
-            $('#selected-time-display').text(' ' + selectedTime + " - " + recipientName);
-            $('#dropdownMenuButton').removeClass('btn-success').addClass('btn-danger');
+            var tableId = $(this).data('table-id');
+            $('#selected-time-display-' + tableId).text(' ' + selectedTime + " - " + recipientName);
+            $('#dropdownMenuButton-' + tableId).removeClass('btn-success').addClass('btn-danger');
            });
 
             $('.release').click(function(e){
                 e.preventDefault();
-                $('#selected-time-display').text('');
-                $('#dropdownMenuButton').removeClass('btn-danger').addClass('btn-success');
+                var tableId = $(this).data('table-id');
+                $('#selected-time-display-' + tableId).text('');
+                $('#dropdownMenuButton-' + tableId).removeClass('btn-danger').addClass('btn-success');
             });
         })
     </script>
@@ -104,9 +100,10 @@
         <div class="row">
             <div class="col-md-8">
                 <h2>Resturangvåning</h2>
+                <button type="button" class="btn btn-dark">Alla bord upptagna - Lägg till i kö</button>
                 <ul class="list-group mt-3">
                     <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 1 <span id="selected-time-display"></span>
+                        Bord 1 <span id="selected-time-display-1"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Action
@@ -118,7 +115,7 @@
                         </div>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 2 <span id="selected-time-display"></span>
+                        Bord 2 <span id="selected-time-display-2"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Action
