@@ -6,7 +6,12 @@ var GlobalObject = {
 //när dokumentet har laddats klart
 $(document).ready(function () {
 
-    let firstName = $("#firstName").text
+    $("#addToQue").on("click", () => {
+        //reagera på eventlyssnare
+        alert("hello im clicked");
+    })
+    let firstName = $("#recipient-name").value;
+    console.log(firstName);
     let lastName = $("#lastName").text
     // var queId = 2;
     // var firstName = 4;
@@ -19,6 +24,7 @@ $(document).ready(function () {
     addToReservation(GlobalObject, firstName, lastName);
 
 });
+
 
 
 function addToReservation(GlobalObject, firstName, lastName) {
