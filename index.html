@@ -16,26 +16,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="index.html">Bord</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Reservation List</a>
+                    <a class="nav-link" href="reservation.html">Reservationskö</a>
                 </li>
             </ul>
         </div>
     </nav>
     <script>
         $(document).ready(function(){
-
+            /*När man klickar på Boka*/
             $('.book').click(function(e){
             e.preventDefault();
             var selectedTime = $('#showModal select option:selected').text();
             var recipientName = $('#recipient-name').val(); //varför val??
             var tableId = $(this).data('table-id');
+            console.log("Book button clicked for table:" + tableId);
             $('#showModal').data('table-id', tableId);
             $('.confirm-booking').data('table-id', tableId);
             });
 
+            /*När man klickar på Boka gäst*/
 
             $(document).on('click', '.confirm-booking', function(e){
             e.preventDefault();
@@ -44,14 +46,18 @@
             var tableId = $(this).data('table-id');
             $('#selected-time-display-' + tableId).text(' ' + selectedTime + " - " + recipientName);
             $('#dropdownMenuButton-' + tableId).removeClass('btn-success').addClass('btn-danger');
-           });
+            $('#recipient-name').val(''); //tar bort input-värdet
+            $('#showModal select').val("0");
+            });
+
+            /*När man klickar på Avboka*/
 
             $(document).on('click', '.release', function(e){
-                e.preventDefault();
-                var tableId = $(this).data('table-id');
-                console.log()
-                $('#selected-time-display-' + tableId).text('');
-                $('#dropdownMenuButton-' + tableId).removeClass('btn-danger').addClass('btn-success');
+            e.preventDefault();
+            var tableId = $(this).data('table-id');
+            console.log("Relese button clicked for table:" + tableId);
+            $('#selected-time-display-' + tableId).text('');
+            $('#dropdownMenuButton-' + tableId).removeClass('btn-danger').addClass('btn-success');
             });
         });
     </script>
@@ -72,7 +78,7 @@
                 </div>
                 <div class="mb-3">
                     <select class="form-select" aria-label="Default select example">
-                        <option selected>Ankomsttid:</option>
+                        <option selected value="0">Ankomsttid:</option>
                         <option value="1">14:00-16:00</option>
                         <option value="2">14:30-16:30</option>
                         <option value="3">15:00-17:00</option>
@@ -95,182 +101,131 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary confirm-booking" data-bs-dismiss="modal" id="addToQue">Send message</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Avbryt</button>
+              <button type="button" class="btn btn-primary confirm-booking" data-bs-dismiss="modal">Boka gäst</button>
             </div>
           </div>
         </div>
-      </div>
-
-
-
-
-
-
+    </div>
 
     <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <h2>Restaurangvåning</h2>
-                <button type="button" class="btn btn-dark">Alla bord upptagna - Lägg till i kö</button>
                 <h4 class="mt-3">Patio</h4>
                 <ul class="list-group mt-3">
+                    <!--Bord 1-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-1">
                         Bord 1 <span id="selected-time-display-1"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
+                                Alternativ
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-1">
                                 <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="1" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
+                                <a class="dropdown-item release" data-table-id="1" href="#">Avboka</a>
                             </div>
                         </div>
                     </li>
-
+                    
+                    <!--Bord 2-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-1">
                         Bord 2 <span id="selected-time-display-2"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
+                                Alternativ
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-2">
                                 <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="2" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
+                                <a class="dropdown-item release" data-table-id="2" href="#">Avboka</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Bord 3-->
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
+                        Bord 3 <span id="selected-time-display-3"></span>
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Alternativ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-3">
+                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="3" href="#">Boka</a>
+                                <a class="dropdown-item release" data-table-id="3" href="#">Avboka</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!--Bord 4-->
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
+                        Bord 4 <span id="selected-time-display-4"></span>
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Alternativ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-4">
+                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="4" href="#">Boka</a>
+                                <a class="dropdown-item release" data-table-id="4" href="#">Avboka</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Bord 5-->
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
+                        Bord 5 <span id="selected-time-display-5"></span>
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-5" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Alternativ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-5">
+                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="5" href="#">Boka</a>
+                                <a class="dropdown-item release" data-table-id="5" href="#">Avboka</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Bord 6-->
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
+                        Bord 6 <span id="selected-time-display-6"></span>
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Alternativ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-6">
+                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="6" href="#">Boka</a>
+                                <a class="dropdown-item release" data-table-id="6" href="#">Avboka</a>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
 
-
-
-
-
-
-
-
-
             <div class="col-md-8">
                 <h4 class="mt-3">Restaurang</h4>
                 <ul class="list-group mt-3">
+                    <!--Bord 7-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 7 <span id="selected-time-display"></span>
+                        Bord 7 <span id="selected-time-display-7"></span>
                         <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-7" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Alternativ
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-7">
+                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="7" href="#">Boka</a>
+                                <a class="dropdown-item release" data-table-id="7" href="#">Avboka</a>
                             </div>
                         </div>
                     </li>
+                    <!--Bord 8-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 8 <span id="selected-time-display"></span>
+                        Bord 8 <span id="selected-time-display-8"></span>
                         <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-8" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Alternativ
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 9 <span id="selected-time-display"></span>
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 10 <span id="selected-time-display"></span>
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 11 <span id="selected-time-display"></span>
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 12 <span id="selected-time-display"></span>
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 13 <span id="selected-time-display"></span>
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 14 <span id="selected-time-display"></span>
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 15 <span id="selected-time-display"></span>
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                        Bord 16 <span id="selected-time-display"></span>
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" href="#">Boka</a>
-                                <a class="dropdown-item release" href="#">Avboka</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-8">
+                                <a class="dropdown-item book" data-bs-toggle="modal" data-bs-target="#showModal" data-table-id="7" href="#">Boka</a>
+                                <a class="dropdown-item release" data-table-id="7" href="#">Avboka</a>
                             </div>
                         </div>
                     </li>
@@ -281,6 +236,5 @@
             </div>
         </div>
     </div>
-    <script src="./reseration.js"></script>
 </body>
 </html>
