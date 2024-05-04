@@ -32,24 +32,19 @@
         </div>
     </nav>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function () { //säkerställer att html-hinner ladda klart innan funktionerna körs
             /*När man klickar på Boka*/
             $('.book').click(function (e) {
                 e.preventDefault();
-                var selectedTime = $('#showModal select option:selected').text();
-                var recipientName = $('#recipient-name').val(); //varför val??
-                var tableId = $(this).data('table-id');
-                console.log("Book button clicked for table:" + tableId);
-                $('#showModal').data('table-id', tableId);
+                var tableId = $(this).data('table-id'); 
                 $('.confirm-booking').data('table-id', tableId);
             });
 
             /*När man klickar på Boka gäst*/
-
-            $(document).on('click', '.confirm-booking', function (e) {
+            $('.confirm-booking').click(function (e) {
                 e.preventDefault();
-                var selectedTime = $('#showModal select option:selected').text();
-                var recipientName = $('#recipient-name').val(); //varför val??
+                var selectedTime = $('#showModal select option:selected').text(); //lagrar vald tid i variabel
+                var recipientName = $('#recipient-name').val(); //lagrar namn i variabel
                 var tableId = $(this).data('table-id');
                 $('#selected-time-display-' + tableId).text(' ' + selectedTime + " - " + recipientName);
                 $('#dropdownMenuButton-' + tableId).removeClass('btn-success').addClass('btn-danger');
@@ -58,11 +53,9 @@
             });
 
             /*När man klickar på Avboka*/
-
-            $(document).on('click', '.release', function (e) {
+            $('.release').click(function (e) {
                 e.preventDefault();
                 var tableId = $(this).data('table-id');
-                console.log("Relese button clicked for table:" + tableId);
                 $('#selected-time-display-' + tableId).text('');
                 $('#dropdownMenuButton-' + tableId).removeClass('btn-danger').addClass('btn-success');
             });
@@ -74,7 +67,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ny bokning</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -389,5 +382,4 @@
         </div>
     </div>
 </body>
-
 </html>
