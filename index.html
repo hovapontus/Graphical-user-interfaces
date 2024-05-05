@@ -36,7 +36,7 @@
             /*När man klickar på Boka*/
             $('.book').click(function (e) {
                 e.preventDefault();
-                var tableId = $(this).data('table-id'); 
+                var tableId = $(this).data('table-id');
                 $('.confirm-booking').data('table-id', tableId);
             });
 
@@ -109,8 +109,8 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
+    <div class="container d-flex">
+        <div class="row d-block">
             <div class="col-md-8">
                 <h2>Restaurangvåning</h2>
                 <h4 class="mt-0">Patio</h4>
@@ -376,10 +376,56 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-4">
-                <img src="/resorces/img/1.png" class="img-fluid" alt="resturant floor">
+
+        </div>
+        <div class="col-md-4">
+            <img src="/resorces/img/1.png" class="img-fluid" alt="resturant floor">
+        </div>
+        <!--reservkö lista-->
+        <div class="modal fade" id="showModalReservation" tabindex="-1" aria-labelledby="reservationModal"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="reservationModal">New message</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Namn:</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Stäng</button>
+                        <button type="button" class="btn btn-primary confirm-booking" data-bs-dismiss="modal"
+                            id="addToQue">Lägg till i kö</button>
+                    </div>
+                </div>
             </div>
         </div>
+        <!--Reservation-->
+        <div class="container">
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                data-bs-target="#showModalReservation">Alla bord
+                upptagna
+                - Lägg till i kö</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Que ID</th>
+                        <th scope="col">First</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+        <script src="./reservation.js"></script>
     </div>
 </body>
+
 </html>
