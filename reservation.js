@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     //när användaren trycker på modal send ska namnet sparas detta ska ske på modal-alla-bord upptagna
     $("#addToQue").on("click", () => {
-        let firstName = $("#queName").val();
+        let firstName = $("#queNamea").val();
         console.log(firstName);
         addToReservation(GlobalObject, firstName);
 

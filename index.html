@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +13,8 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Aira</a>
-    </nav>
+<body class="pt-3">
+
     <script>
         $(document).ready(function () { //säkerställer att html-hinner ladda klart innan funktionerna körs
             /*När man klickar på Boka*/
@@ -98,15 +97,16 @@
             </div>
         </div>
     </div>
+    <h2>Restaurangvåning</h2>
     <div class="container d-flex">
         <div class="row d-block">
             <div class="col-md-8">
-                <h2>Restaurangvåning</h2>
+
                 <h4 class="mt-0">Patio</h4>
                 <ul class="list-group mt-3">
                     <!--Bord 1-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 1 <span id="selected-time-display-1"></span>
+                        Bord 1 (4 personer)<span id="selected-time-display-1"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-1"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
