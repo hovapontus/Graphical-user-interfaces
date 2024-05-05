@@ -45,8 +45,9 @@
                 e.preventDefault();
                 var selectedTime = $('#showModal select option:selected').text(); //lagrar vald tid i variabel
                 var recipientName = $('#recipient-name').val(); //lagrar namn i variabel
+                var bookingDate = $('#booking-date').val(); // Get the selected date value
                 var tableId = $(this).data('table-id');
-                $('#selected-time-display-' + tableId).text(' ' + selectedTime + " - " + recipientName);
+                $('#selected-time-display-' + tableId).text(bookingDate + ' ' + selectedTime + " - " + recipientName);
                 $('#dropdownMenuButton-' + tableId).removeClass('btn-success').addClass('btn-danger');
                 $('#recipient-name').val(''); //tar bort input-värdet
                 $('#showModal select').val("0");
@@ -74,7 +75,11 @@
                     <form>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Namn:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="recipient-name">     
+                        </div>
+                        <div class="mb-3">
+                            <label for="booking-date" class="col-form-label">Datum:</label>
+                            <input type="date" class="form-control" id="booking-date">
                         </div>
                         <div class="mb-3">
                             <select class="form-select" aria-label="Default select example">
