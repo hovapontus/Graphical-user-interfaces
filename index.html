@@ -29,12 +29,25 @@
                 e.preventDefault();
                 var selectedTime = $('#showModal select option:selected').text(); //lagrar vald tid i variabel
                 var recipientName = $('#recipient-name').val(); //lagrar namn i variabel
-                var bookingDate = $('#booking-date').val(); // Get the selected date value
+                //       var bookingDate = $('#booking-date').val(); // Get the selected date value
                 var tableId = $(this).data('table-id');
-                $('#selected-time-display-' + tableId).text(bookingDate + ' ' + selectedTime + " - " + recipientName);
-                $('#dropdownMenuButton-' + tableId).removeClass('btn-success').addClass('btn-danger');
-                $('#recipient-name').val(''); //tar bort input-värdet
-                $('#showModal select').val("0");
+                //  $('#selected-time-display-' + tableId).text(bookingDate + ' ' + selectedTime + " - " + recipientName);
+
+                if (recipientName && selectedTime !== "Ankomsttid:") { // kolla om namn och tid är angivna
+                    var bookingInfo = $('<p>').text(recipientName + ' - ' + selectedTime);
+
+                    $('#selected-time-display-' + tableId).append(bookingInfo);
+                    // $('#selected-time-display-' + tableId).text(recipientName + ' - ' + selectedTime);
+                    $('#dropdownMenuButton-' + tableId).removeClass('btn-success').addClass('btn-danger');
+                    $('#recipient-name').val(''); // tar bort input-värdet
+                    $('#showModal select').val("0");
+                } else {
+                    alert('Vänligen fyll i både namn och ankomsttid.');
+                }
+
+                //$('#dropdownMenuButton-' + tableId).removeClass('btn-success').addClass('btn-danger');
+                //$('#recipient-name').val(''); //tar bort input-värdet
+                //$('#showModal select').val("0");
             });
 
             /*När man klickar på Avboka*/
@@ -61,10 +74,7 @@
                             <label for="recipient-name" class="col-form-label">Namn:</label>
                             <input type="text" class="form-control" id="recipient-name">
                         </div>
-                        <div class="mb-3">
-                            <label for="booking-date" class="col-form-label">Datum:</label>
-                            <input type="date" class="form-control" id="booking-date">
-                        </div>
+
                         <div class="mb-3">
                             <select class="form-select" aria-label="Default select example">
                                 <option selected value="0">Ankomsttid:</option>
@@ -122,7 +132,7 @@
 
                     <!--Bord 2-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 2 <span id="selected-time-display-2"></span>
+                        Bord 2 (4 personer) <span id="selected-time-display-2"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-2"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -138,7 +148,7 @@
 
                     <!--Bord 3-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 3 <span id="selected-time-display-3"></span>
+                        Bord 3 (4 personer) <span id="selected-time-display-3"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-3"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -154,7 +164,7 @@
 
                     <!--Bord 4-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 4 <span id="selected-time-display-4"></span>
+                        Bord 4 (4 personer) <span id="selected-time-display-4"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-4"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -170,7 +180,7 @@
 
                     <!--Bord 5-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 5 <span id="selected-time-display-5"></span>
+                        Bord 5(4 personer) <span id="selected-time-display-5"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-5"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,7 +196,7 @@
 
                     <!--Bord 6-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 6 <span id="selected-time-display-6"></span>
+                        Bord 6 (4 personer) <span id="selected-time-display-6"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-6"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -207,7 +217,7 @@
                 <ul class="list-group mt-3">
                     <!--Bord 7-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 7 <span id="selected-time-display-7"></span>
+                        Bord 7 (4 personer) <span id="selected-time-display-7"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-7"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -222,7 +232,7 @@
                     </li>
                     <!--Bord 8-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 8 <span id="selected-time-display-8"></span>
+                        Bord 8 (4 personer) <span id="selected-time-display-8"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-8"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -238,7 +248,7 @@
 
                     <!--Bord 9-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 9 <span id="selected-time-display-9"></span>
+                        Bord 9 (4 personer) <span id="selected-time-display-9"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-9"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -254,7 +264,7 @@
 
                     <!--Bord 10-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 10 <span id="selected-time-display-10"></span>
+                        Bord 10 (4 personer) <span id="selected-time-display-10"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-10"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -270,7 +280,7 @@
 
                     <!--Bord 11-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 11 <span id="selected-time-display-11"></span>
+                        Bord 11 (2 personer) <span id="selected-time-display-11"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-11"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -286,7 +296,7 @@
 
                     <!--Bord 12-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 12 <span id="selected-time-display-12"></span>
+                        Bord 12 (2 personer) <span id="selected-time-display-12"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-11"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -302,7 +312,7 @@
 
                     <!--Bord 13-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 13 <span id="selected-time-display-13"></span>
+                        Bord 13 (6 personer) <span id="selected-time-display-13"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-13"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -318,7 +328,7 @@
 
                     <!--Bord 14-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 14 <span id="selected-time-display-14"></span>
+                        Bord 14 (2 personer) <span id="selected-time-display-14"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-14"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -334,7 +344,7 @@
 
                     <!--Bord 15-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 15 <span id="selected-time-display-15"></span>
+                        Bord 15 (2 personer) <span id="selected-time-display-15"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-15"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -350,7 +360,7 @@
 
                     <!--Bord 16-->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-0">
-                        Bord 16 <span id="selected-time-display-16"></span>
+                        Bord 16 (2 personer) <span id="selected-time-display-16"></span>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton-16"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -384,13 +394,22 @@
                             <div class="mb-3">
                                 <label for="queName" class="col-form-label">Namn:</label>
                                 <input type="text" class="form-control" id="queName">
+                                <label for="antalGästerReservation" class="col-form-label">Antal Gäster:</label>
+                                <select class="form-control" id="reservationAntalGaster">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                </select>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Stäng</button>
-                        <button type="button" class="btn btn-primary confirm-booking" data-bs-dismiss="modal"
-                            id="addToQue">Lägg till i kö</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="addToQue">Lägg till i
+                            kö</button>
                     </div>
                 </div>
             </div>
@@ -404,6 +423,7 @@
                     <tr>
                         <th scope="col">Kö nummer</th>
                         <th scope="col">Namn</th>
+                        <th scope="col">Ant Gäster</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">

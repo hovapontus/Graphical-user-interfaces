@@ -1,3 +1,10 @@
 .list-group-item {
-   min-width: 600px;
+  min-width: 600px;
+}
+
+h2 {
+  margin: 4px;
+  border: 2px solid black;
+  text-align: center;
+  border-radius: 4px;
 }
